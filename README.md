@@ -11,4 +11,4 @@ If you're learning Go and want to contribute your own implementation, pull reque
 ## Implementations
 
  - [cat](cat/)
-   - [Example](cat/tom@aporcupine.com/cat/main.go)
+   - [Example](cat/aporcupine/cat/main.go)
