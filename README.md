@@ -12,3 +12,5 @@ If you're learning Go and want to contribute your own implementation, pull reque
 
  - [cat](cat/)
    - [Example](cat/aporcupine/cat/main.go)
+ - [yes](yes/)
+   - [Example](yes/aporcupine/yes/main.go)
