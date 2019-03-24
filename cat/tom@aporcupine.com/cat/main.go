@@ -91,7 +91,7 @@ func cat(file io.Reader) {
 			}
 		}
 		partial = false
-		// Add $ to end of lines if requested and partial line prefix
+		// Add $ to end of lines if requested and not partial line prefix
 		if err == bufio.ErrBufferFull {
 			partial = true
 		} else if *showEnds && err != io.EOF {
