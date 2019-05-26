@@ -4,6 +4,9 @@
 // recursively add in a counter for proper spacing depth
 // and then recursively call the subDir function in itself
 
+// add the flags package for -I extension as well.
+// subDir to skip currently not implemented
+
 package main
 
 import (
