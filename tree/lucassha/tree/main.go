@@ -18,7 +18,9 @@ import (
 
 func main() {
 
-	subDirToSkip := "bbb"
+	// add in flag components to test for this
+	subDirToSkip := ""
+
 	fileCount := numFilesInDir(".")
 	fileNum := 1
 
