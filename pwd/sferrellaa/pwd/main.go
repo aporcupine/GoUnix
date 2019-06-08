@@ -1,6 +1,6 @@
 // pwd is a go implementation of the unix tool "pwd"
 // created 23 March 2019 by SferrellaA
-// edited  23 March 2019 by SferrellaA
+// edited  28 March 2019 by SferrellaA
 package main
 
 import (
@@ -16,6 +16,45 @@ func errFail(err error) {
 	}
 }
 
+// usage() defines the behavior of `pwd -h`
+func usage() {
+	fmt.Println("Usage: pwd [-LP]")
+	fmt.Println("   Print the name of the current working directory")
+	fmt.Println("")
+	fmt.Println("Options:")
+	fmt.Println("   -L Logical path (symlinks allowed) (default true)")
+	fmt.Println("   -P Physical/literal path (no symlinks)")
+	fmt.Println("")
+	fmt.Println("`pwd` assumes `-L` if no flag is given")
+	fmt.Println("`-P` will override `-L` if both are given")
+}
+
+// getFlags() configures and parses flags, returns pwd mode
+func getFlags() bool {
+
+	// Additional, hidden flags prevent user headache
+
+	// Logical is assumed by default, so value not stored
+	flag.Bool("L", false, "")
+	flag.Bool("l", false, "")
+	flag.Bool("logical", false, "")
+
+	// Physical trumps logical
+	P := flag.Bool("P", false, "")
+	p := flag.Bool("p", false, "")
+	physical := flag.Bool("physical", false, "")
+
+	// Read flags
+	flag.Usage = usage
+	flag.Parse()
+
+	// Return true for -P, false for -L
+	if *P || *p || *physical {
+		return true
+	}
+	return false
+}
+
 // absolute() returns the current absolute/logical PWD
 func absolute() string {
 	abs, err := filepath.Abs(".")
@@ -23,36 +62,26 @@ func absolute() string {
 	return abs
 }
 
-func main() {
+// PWD() provides `pwd` functionality as a callable function
+func PWD(physical bool) string {
 
-	// handle flags
-	version := flag.Bool("version", false, "version information")
-	logical := flag.Bool("L", false, "display logical path (allows symlinks)")
-	physical := flag.Bool("P", true, "display physical path (literal path, no symlinks)")
-	flag.Parse()
+	// Get the absolute (logical) path
+	pwd := absolute()
 
-	// TODO handle -LP and -PL flags
-	// TODO handle -l, -p flags
-	// TODO handle --logical and --physical flags
-	// TODO adjust usage text
-
-	switch {
-	// display version information and exit
-	case *version:
-		fmt.Println("GoUnix ls implementation by SferrellaA")
-		return
-
-	// display the logical (symlinks allowed) path
-	case *logical:
-		pwd := absolute()
-		fmt.Println(pwd)
-		return
-
-	// display the physical (no symlinks) path
-	case *physical:
-		pwd, err := filepath.EvalSymlinks(absolute())
+	// If change logical to physical if argued for
+	if physical {
+		var err error
+		pwd, err = filepath.EvalSymlinks(pwd)
 		errFail(err)
-		fmt.Println(pwd)
-		return
 	}
+
+	// Return pwd
+	return pwd
+}
+
+// main() calls on existing functions
+func main() {
+	mode := getFlags()
+	pwd := PWD(mode)
+	fmt.Println(pwd)
 }
