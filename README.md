@@ -11,8 +11,14 @@ If you're learning Go and want to contribute your own implementation, pull reque
 ## Implementations
 
  - [cat](cat/)
-   - [Example](cat/aporcupine/cat/main.go)
- - [yes](yes/)
+    - [Example](cat/aporcupine/cat/main.go)
+ - [ls](ls/)
+    - [Example](ls/telegrammae/ls/main.go)
+- [mkdir](mkdir/)
+    - [Example](mkdir/telegrammae/mkdir/main.go)
+- [pwd](pwd/)
+    - [Example](pwd/sferrellaa/pwd/main.go)
+- [whoami](whoami/)
+    - [Example](whoami/aporcupine/whoami/main.go)
+- [yes](yes/)
    - [Example](yes/aporcupine/yes/main.go)
- - [whoami](whoami/)
-   - [Example](whoami/aporcupine/whoami/main.go)
