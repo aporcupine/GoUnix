@@ -10,9 +10,9 @@ If you're learning Go and want to contribute your own implementation, pull reque
 
 ## Implementations
 
- - [cat](cat/)
+- [cat](cat/)
     - [Example](cat/aporcupine/cat/main.go)
- - [ls](ls/)
+- [ls](ls/)
     - [Example](ls/telegrammae/ls/main.go)
 - [mkdir](mkdir/)
     - [Example](mkdir/telegrammae/mkdir/main.go)
@@ -22,3 +22,7 @@ If you're learning Go and want to contribute your own implementation, pull reque
     - [Example](whoami/aporcupine/whoami/main.go)
 - [yes](yes/)
    - [Example](yes/aporcupine/yes/main.go)
+- [true](true/)
+   - [Example](true/sferrellaa/true/main.go)
+- [false](false/)
+   - [Example](false/sferrellaa/false/main.go)
